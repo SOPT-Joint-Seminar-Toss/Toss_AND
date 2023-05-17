@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="grey_400">#4e5a67</color>
+    <color name="grey_600">#191e28</color>
+    <color name="grey_100">#f2f3f5</color>
+    <color name="grey_300">#8d94a0</color>
+    <color name="grey_500">#333d4b</color>
+    <color name="grey_200">#e4e9ec</color>
+    <color name="blue">#4880ee</color>
+    <color name="warning">#ef4452</color>
+    <color name="darkblue">#204ff5</color>
+    <color name="white">#ffffff</color>
+    <color name="gray_4">#f4f4f4</color>
+    <color name="lightblue">#daebff</color>
+    <color name="color_grey_grey_400">#4e5a67</color>
+    <color name="grey_scale_font_19">#191919</color>
+    <color name="grey_scale_font_99">#999999</color>
+    <color name="color_primary_toss_light_blue">#daebff</color>
+    <color name="toss_gray_gray">#8d94a0</color>
+    <color name="toss_gray_white">#ffffff</color>
+</resources>
