@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Toss_AND</string>
+
+    <!-- purchase -->
+    <string name="purchase_btn_purchase">구매하기</string>
+    <string name="purchase_btn_gift">선물하기</string>
+    <string name="purchase_cashback_3percent">3% 캐시백드려요</string>
+    <string name="purchase_policy_terms">(필수)토스 브랜드콘 서비스 이용약관</string>
+    <string name="purchase_validity">유효기간</string>
+    <string name="purchase_caution">메가MGC커피 유의사항</string>
+    <string name="purchase_announcement">브랜드콘 안내</string>
+
+    <!-- product_info -->
+    <string name="productinfo_item">(ICE)아메리카노 (2,000원)</string>
+    <string name="productinfo_description">시원하고 깔끔한 맛을 자랑하는 커피로,\n메가커피의 대표 메뉴입니다.</string>
+
+    <!-- review -->
+    <string name="review_notreview">작성된 리뷰가 없어요.\n구매 후 첫 리뷰를 작성해주세요.</string>
+
 </resources>
