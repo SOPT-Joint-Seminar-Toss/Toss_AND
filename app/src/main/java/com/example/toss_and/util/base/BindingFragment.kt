@@ -1,4 +1,4 @@
-package com.example.toss_and.presentation.util.base
+package com.example.toss_and.util.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
