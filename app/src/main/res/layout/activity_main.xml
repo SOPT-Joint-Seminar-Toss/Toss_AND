@@ -11,6 +11,15 @@
         android:layout_height="match_parent"
         android:background="@color/grey_100">
 
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottom_nav"/>
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"
             android:layout_width="match_parent"
@@ -27,7 +36,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/bottom_navigation"
             android:background="@drawable/rec_white_fill_20"
-            android:paddingHorizontal="36dp"/>
+            android:paddingHorizontal="36dp"
+            android:elevation="30dp"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
