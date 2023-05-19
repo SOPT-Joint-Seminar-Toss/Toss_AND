@@ -10,12 +10,12 @@ class MainPagerAdapter(fragment: FragmentActivity): FragmentStateAdapter(fragmen
 
     override fun createFragment(position: Int): Fragment {
         return when(position) {
-            0 -> HomeFragment()
+            0 -> TempHomeFragment()
             1 -> BenefitFragment()
             2 -> TempPayFragment() // TODO: 추후 수정 예정
             3-> StockFragment()
             4 -> AllFragment()
-            else -> HomeFragment()
+            else -> TempHomeFragment()
         }
     }
 }
