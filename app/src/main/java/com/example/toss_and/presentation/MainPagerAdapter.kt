@@ -12,7 +12,7 @@ class MainPagerAdapter(fragment: FragmentActivity): FragmentStateAdapter(fragmen
         return when(position) {
             0 -> HomeFragment()
             1 -> BenefitFragment()
-            2 -> PayFragment() // TODO: 추후 수정 예정
+            2 -> TempPayFragment() // TODO: 추후 수정 예정
             3-> StockFragment()
             4 -> AllFragment()
             else -> HomeFragment()
