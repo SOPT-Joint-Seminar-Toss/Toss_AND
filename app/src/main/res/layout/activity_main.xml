@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/grey_100">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"
@@ -16,15 +17,17 @@
             android:layout_height="80dp"
             android:theme="@style/AndroidCaptionMedium10"
             app:itemActiveIndicatorStyle="@android:color/transparent"
+            app:itemIconTint="@drawable/menu_selector_color"
             app:itemPaddingBottom="35dp"
             app:itemPaddingTop="8dp"
+            app:itemTextColor="@drawable/menu_selector_color"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:itemIconTint="@drawable/menu_selector_color"
-            app:itemTextColor="@drawable/menu_selector_color"
-            app:menu="@menu/bottom_navigation" />
+            app:menu="@menu/bottom_navigation"
+            android:background="@drawable/rec_white_fill_20"
+            android:paddingHorizontal="36dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
