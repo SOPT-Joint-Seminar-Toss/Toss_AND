@@ -1,48 +1,63 @@
 <resources>
     <style name="AndroidHeader1Bold22">
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">22sp</item>
-        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:letterSpacing">-0.03</item>
     </style>
 
     <style name="AndroidHeader2Bold20">
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:letterSpacing">-0.045</item>
+        <item name="android:letterSpacing">-0.05</item>
     </style>
 
     <style name="AndroidTitle1Bold18">
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="AndroidTitle2Bold16">
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:letterSpacing">-0.045</item>
+        <item name="android:letterSpacing">-0.05</item>
+        <item name="android:lineSpacingExtra">8sp</item>
     </style>
 
     <style name="AndroidSubtitleBold15">
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
-        <item name="android:textSize">17sp</item>
-        <item name="lineHeight">25.5sp</item>
-        <item name="android:letterSpacing">-0.04</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="AndroidButtonMedium14">
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="AndroidBody1Medium14">
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="AndroidBody2Medium12">
-        <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="AndroidBody3Medium11">
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:textSize">11sp</item>
         <item name="android:letterSpacing">-0.03</item>
     </style>
@@ -55,13 +70,63 @@
 
     <style name="AndroidCaptionMedium10">
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">10sp</item>
     </style>
 
-    <style name="AndroidButtonMedium14">
+    <style name="AndroidBrandMedium12">
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">-0.05</item>
+    </style>
+
+    <style name="AndroidItemNameMedium16">
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.05</item>
+    </style>
+
+    <style name="AndroidPriceBold20">
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="AndroidPoint500Medium14">
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:letterSpacing">-0.025</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="AndroidPoint400Medium14">
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="AndroidPointBold14">
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="AndroidPolicyTermsMedium12">
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="AndroidTabLayoutBold14">
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 </resources>
