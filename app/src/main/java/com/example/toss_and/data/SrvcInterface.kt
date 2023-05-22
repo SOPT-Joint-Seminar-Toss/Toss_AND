@@ -10,4 +10,6 @@ interface SrvcInterface {
     fun getAssets(
         @Header("Authorization") authorization: String = "1"
     ): Call<ResAssetDto>
+
+    // TODO: 여러분의 API를 추가하세용~
 }
