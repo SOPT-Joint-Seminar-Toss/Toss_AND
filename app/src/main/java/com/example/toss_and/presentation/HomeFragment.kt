@@ -1,8 +1,6 @@
 package com.example.toss_and.presentation
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +9,20 @@ import com.example.toss_and.databinding.FragmentHomeBinding
 import com.example.toss_and.util.base.BindingFragment
 
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+    private lateinit var myAdapter: HomeBtmCardsAdapter
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
+
+        myAdapter = HomeBtmCardsAdapter()
+        binding.rvBottomCards.adapter = myAdapter
+        binding.rvBottomCards.addItemDecoration(RvDecoration(30))
+        myAdapter.submitList(Constants.homeBtmCards)
+        return binding.root
     }
+
 }
