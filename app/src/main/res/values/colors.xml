@@ -17,9 +17,11 @@
     <color name="grey_scale_font_99">#999999</color>
     <color name="color_primary_toss_light_blue">#daebff</color>
     <color name="toss_gray_gray">#8d94a0</color>
+    <color name="toss_gray_gray_with_hex">#268d94a0</color>
     <color name="toss_gray_white">#ffffff</color>
     <color name="toss_gray_point">#6E757D</color>
     <color name="toss_gray_name_and_price">#6D7582</color>
     <color name="black">#191919</color>
-
+    <color name="pink">#E373C9</color>
+    <color name="pink_text">#C05FD0</color>
 </resources>
