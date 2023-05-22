@@ -13,7 +13,7 @@
 
     <style name="AndroidTitle1Bold18">
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="AndroidTitle2Bold16">
@@ -37,7 +37,7 @@
 
     <style name="AndroidBody2Medium12">
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.025</item>
     </style>
 
@@ -47,9 +47,15 @@
         <item name="android:letterSpacing">-0.03</item>
     </style>
 
+    <style name="AndroidBody5Bold14">
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:letterSpacing">-0.04</item>
+    </style>
+
     <style name="AndroidCaptionMedium10">
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="AndroidButtonMedium14">

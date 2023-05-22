@@ -120,7 +120,6 @@
                         android:id="@+id/iv_asset_next"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="12dp"
                         android:src="@drawable/icn_next"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -196,8 +195,9 @@
                             style="@style/AndroidSubtitleBold15"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="1dp"
                             android:text="포트폴리오 모아보기"
+                            app:layout_constraintTop_toBottomOf="@id/tv_invest_title"
+                            android:layout_marginTop="2dp"
                             app:layout_constraintBottom_toBottomOf="@id/iv_icn_invest"
                             app:layout_constraintStart_toStartOf="@id/tv_invest_title" />
 
@@ -262,18 +262,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
-                            android:layout_marginTop="3dp"
                             android:text="이번 달 쓴 금액"
                             app:layout_constraintStart_toEndOf="@id/iv_icn_consume"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/tv_consume_content"
-                            style="@style/AndroidBody1Medium14"
+                            style="@style/AndroidBody5Bold14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:text="포트폴리오 모아보기"
+                            android:layout_marginTop="2dp"
+                            android:text="123,456원"
                             app:layout_constraintStart_toStartOf="@id/tv_consume_title"
                             app:layout_constraintTop_toBottomOf="@id/tv_consume_title" />
 

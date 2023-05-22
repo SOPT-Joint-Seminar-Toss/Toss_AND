@@ -7,44 +7,46 @@
 
     <ImageView
         android:id="@+id/iv_icon"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
+        android:layout_width="41dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/icn_toss_and_naver" />
+        tools:src="@drawable/icn_saving" />
 
     <TextView
         android:id="@+id/tv_title"
+        style="@style/AndroidCaptionMedium10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
         android:layout_marginTop="4dp"
         android:text="포인트머니 4개"
         app:layout_constraintStart_toEndOf="@id/iv_icon"
-        app:layout_constraintTop_toTopOf="@id/iv_icon"
-        style="@style/AndroidCaptionMedium10"/>
+        app:layout_constraintTop_toTopOf="@id/iv_icon" />
 
     <TextView
         android:id="@+id/tv_amount"
+        style="@style/AndroidSubtitleBold15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
+        android:layout_marginTop="2dp"
         android:text="123,456원"
-        app:layout_constraintStart_toStartOf="@id/tv_title"
         app:layout_constraintBottom_toBottomOf="@id/iv_icon"
-        style="@style/AndroidSubtitleBold15"/>
+        app:layout_constraintStart_toStartOf="@id/tv_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
     <androidx.appcompat.widget.AppCompatButton
+        style="@style/AndroidCaptionMedium10"
         android:layout_width="48dp"
         android:layout_height="0dp"
-        android:text="송금"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/iv_icon"
-        app:layout_constraintBottom_toBottomOf="@id/iv_icon"
-        android:background="@drawable/rec_grey100_fill_5"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="1dp"
-        style="@style/AndroidCaptionMedium10"/>
+        android:background="@drawable/rec_grey100_fill_5"
+        android:stateListAnimator="@null"
+        android:text="송금"
+        app:layout_constraintBottom_toBottomOf="@id/iv_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
