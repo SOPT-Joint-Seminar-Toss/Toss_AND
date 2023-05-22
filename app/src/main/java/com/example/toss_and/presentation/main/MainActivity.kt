@@ -1,4 +1,4 @@
-package com.example.toss_and.presentation
+package com.example.toss_and.presentation.main
 
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2

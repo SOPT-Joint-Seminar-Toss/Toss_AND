@@ -1,4 +1,4 @@
-package com.example.toss_and.presentation
+package com.example.toss_and.presentation.main.home
 
 data class HomeBtmCardsDto(
     val subtitle: String,

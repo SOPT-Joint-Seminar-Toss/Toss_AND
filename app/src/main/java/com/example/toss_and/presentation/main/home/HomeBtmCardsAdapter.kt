@@ -1,4 +1,4 @@
-package com.example.toss_and.presentation
+package com.example.toss_and.presentation.main.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

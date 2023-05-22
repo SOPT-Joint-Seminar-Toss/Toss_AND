@@ -1,4 +1,4 @@
-package com.example.toss_and.presentation
+package com.example.toss_and.util
 
 import android.graphics.Rect
 import android.view.View

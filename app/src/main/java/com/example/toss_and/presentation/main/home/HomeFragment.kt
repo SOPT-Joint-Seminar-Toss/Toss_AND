@@ -1,4 +1,4 @@
-package com.example.toss_and.presentation
+package com.example.toss_and.presentation.main.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.toss_and.R
 import com.example.toss_and.databinding.FragmentHomeBinding
+import com.example.toss_and.util.SampleData
+import com.example.toss_and.util.RvDecoration
 import com.example.toss_and.util.base.BindingFragment
 
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
@@ -21,7 +23,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         myAdapter = HomeBtmCardsAdapter()
         binding.rvBottomCards.adapter = myAdapter
         binding.rvBottomCards.addItemDecoration(RvDecoration(30))
-        myAdapter.submitList(Constants.homeBtmCards)
+        myAdapter.submitList(SampleData.homeBtmCards)
         return binding.root
     }
 
