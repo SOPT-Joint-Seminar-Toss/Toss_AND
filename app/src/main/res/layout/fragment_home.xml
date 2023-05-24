@@ -14,7 +14,9 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -153,10 +155,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="0dp"
                             android:adjustViewBounds="true"
+                            android:src="@drawable/icn_toss_and_naver"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:src="@drawable/icn_toss_and_naver" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/tv_asset_account_title"
@@ -197,10 +199,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="0dp"
                             android:adjustViewBounds="true"
+                            android:src="@drawable/icn_moneybag"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:src="@drawable/icn_moneybag" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/tv_asset_loan_title"
@@ -392,6 +394,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
+                        android:overScrollMode="never"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         tools:listitem="@layout/item_home_bottom_cards" />
 
