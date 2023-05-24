@@ -9,6 +9,7 @@ import com.example.toss_and.databinding.ActivityMainBinding
 import com.example.toss_and.presentation.MainViewModel
 import com.example.toss_and.util.base.BindingActivity
 
+
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val mainVm by viewModels<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,26 +43,31 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
             when (it.itemId) {
                 R.id.nav_home -> {
                     binding.viewPager.currentItem = 0
+                    //setStatusBarColor(R.color.grey_100)
                     return@setOnItemSelectedListener true
                 }
 
                 R.id.nav_benefit -> {
                     binding.viewPager.currentItem = 1
+                    //setStatusBarColor(R.color.white)
                     return@setOnItemSelectedListener true
                 }
 
                 R.id.nav_tosspay -> {
                     binding.viewPager.currentItem = 2
+                    //setStatusBarColor(R.color.white)
                     return@setOnItemSelectedListener true
                 }
 
                 R.id.nav_stock -> {
                     binding.viewPager.currentItem = 3
+                    //setStatusBarColor(R.color.white)
                     return@setOnItemSelectedListener true
                 }
 
                 R.id.nav_all -> {
                     binding.viewPager.currentItem = 4
+                    //setStatusBarColor(R.color.white)
                     return@setOnItemSelectedListener true
                 }
 
