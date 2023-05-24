@@ -20,6 +20,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
+        setDefaultListComponents()
         myAdapter = HomeBtmCardsAdapter()
         binding.rvBottomCards.adapter = myAdapter
         binding.rvBottomCards.addItemDecoration(RvDecoration(30))
@@ -30,5 +31,33 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     override fun onResume() {
         super.onResume()
         setStatusBarColor(requireActivity(), R.color.grey_100)
+    }
+
+    private fun setDefaultListComponents() {
+        with(binding.clInvest) {
+            tvLabel.text = "투자"
+            clList.clHomeAsset.visibility = View.VISIBLE
+            with(clList) {
+                ivIcon.setImageResource(R.drawable.icn_spent)
+                tvTitle.text = "입출금통장"
+                tvContent.text = "잔액 보기"
+                btnSend.visibility = View.GONE
+                btnNext.visibility = View.VISIBLE
+            }
+        }
+        with(binding.clConsume) {
+            tvLabel.text = "소비"
+            clList.clHomeAsset.visibility = View.VISIBLE
+            with(clList) {
+                ivIcon.setImageResource(R.drawable.icn_cards)
+                tvTitle.text = "이번 달 쓴 금액"
+                tvContent.text = "123,456원"
+                btnSend.text = "내역"
+            }
+        }
+        with(binding.clAsset) {
+            tvLabel.text = "소비"
+            rvAsset.visibility = View.VISIBLE
+        }
     }
 }
