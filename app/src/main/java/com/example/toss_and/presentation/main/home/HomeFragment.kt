@@ -34,6 +34,10 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun setDefaultListComponents() {
+        with(binding.clAsset) {
+            tvLabel.text = "자산"
+            rvAsset.visibility = View.VISIBLE
+        }
         with(binding.clInvest) {
             tvLabel.text = "투자"
             clList.clHomeAsset.visibility = View.VISIBLE
@@ -54,10 +58,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
                 tvContent.text = "123,456원"
                 btnSend.text = "내역"
             }
-        }
-        with(binding.clAsset) {
-            tvLabel.text = "소비"
-            rvAsset.visibility = View.VISIBLE
         }
     }
 }
