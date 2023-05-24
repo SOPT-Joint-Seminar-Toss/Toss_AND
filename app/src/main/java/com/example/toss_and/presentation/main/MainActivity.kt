@@ -1,17 +1,26 @@
 package com.example.toss_and.presentation.main
 
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.example.toss_and.R
 import com.example.toss_and.databinding.ActivityMainBinding
 import com.example.toss_and.util.base.BindingActivity
 
 class MainActivity: BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
+    private val mainVm by viewModels<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setViewPager()
         setNavigation()
+
+        /* TODO: activity에서 쓴다면 이런 식으로 쓰면 되겠찌 >< */
+        mainVm.getAssets()
+        mainVm.assetResult.observe(this) {
+            Log.d("ABC", it.toString())
+        }
     }
 
     private fun setViewPager() {
