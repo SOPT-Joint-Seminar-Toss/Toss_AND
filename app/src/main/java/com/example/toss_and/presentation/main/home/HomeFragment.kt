@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.toss_and.R
 import com.example.toss_and.databinding.FragmentHomeBinding
-import com.example.toss_and.util.SampleData
 import com.example.toss_and.util.RvDecoration
+import com.example.toss_and.util.SampleData
 import com.example.toss_and.util.base.BindingFragment
 import com.example.toss_and.util.setStatusBarColor
 
