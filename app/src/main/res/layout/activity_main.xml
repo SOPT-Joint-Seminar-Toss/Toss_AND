@@ -10,23 +10,64 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/grey_100">
+        android:background="@color/grey_100"
+        android:clipChildren="true">
 
         <FrameLayout
-            android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/bottom_nav"
-            android:fitsSystemWindows="true"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottom_nav">
 
+            <!-- fragment container -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true" />
+
+            <!-- [사라질] 소비 탭 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_temp_consume"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:background="@drawable/rec_btnv_background"
+                android:elevation="10dp"
+                android:paddingHorizontal="38dp"
+                android:layout_gravity="bottom">
+
+                <TextView
+                    android:id="@+id/tv_label"
+                    style="@style/AndroidTitle1Bold18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="소비"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    style="@style/ButtonStyleGrey.WithPadding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="내역"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_label" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </FrameLayout>
+
+        <!-- bottom navigation -->
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:background="@drawable/rec_btnv_background"
+            android:background="@color/white"
+            android:outlineProvider="none"
             android:paddingHorizontal="36dp"
             android:theme="@style/AndroidCaptionMedium10"
             app:itemActiveIndicatorStyle="@android:color/transparent"
@@ -41,6 +82,5 @@
             app:menu="@menu/bottom_navigation" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </layout>
