@@ -44,4 +44,3 @@ object HomeBottomCardsDiffCallback : DiffUtil.ItemCallback<HomeBtmCardsDto>() {
         return oldItem == newItem
     }
 }
-

@@ -1,9 +1,9 @@
 package com.example.toss_and.presentation.purchase.screens
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.example.toss_and.R
@@ -11,22 +11,21 @@ import com.example.toss_and.databinding.ActivityPurchaseBinding
 import com.example.toss_and.presentation.gift.screens.GiftActivity
 import com.example.toss_and.presentation.purchase.adapters.TablayoutViewPagerAdapter
 import com.example.toss_and.presentation.purchase.viewmodels.PurchaseViewModel
+import com.example.toss_and.util.base.BindingActivity
 import com.google.android.material.tabs.TabLayoutMediator
 
-class PurchaseActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityPurchaseBinding
+class PurchaseActivity : BindingActivity<ActivityPurchaseBinding>(R.layout.activity_purchase) {
     private lateinit var tablayoutViewPagerAdapter: TablayoutViewPagerAdapter
     private val purchaseVm by viewModels<PurchaseViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPurchaseBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         initAdapter()
         initTabLayout()
         goGiftActivity()
+
+        registerClickEvent()
         registerObserver()
     }
 
@@ -47,6 +46,24 @@ class PurchaseActivity : AppCompatActivity() {
                     btnHeart.setImageResource(R.drawable.icn_heart_active)
                 } else {
                     btnHeart.setImageResource(R.drawable.icn_heart_inactive)
+                }
+            }
+        }
+
+        purchaseVm.likeResult.observe(this) {
+            if (it) {
+                Toast.makeText(this, "이 상품을 찜했습니다!", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun registerClickEvent() {
+        binding.btnHeart.setOnClickListener {
+            with(binding.btnHeart) {
+                if (isClickable) {
+                    this.setImageResource(R.drawable.icn_heart_active)
+                    purchaseVm.sendLike(1)
+                    this.isClickable = false
                 }
             }
         }

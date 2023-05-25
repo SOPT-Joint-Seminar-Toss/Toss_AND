@@ -14,6 +14,7 @@ import com.example.toss_and.util.base.BindingFragment
 import com.example.toss_and.util.setStatusBarColor
 
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+    private lateinit var assetAdapter: HomeAssetsAdapter
     private lateinit var myAdapter: HomeBtmCardsAdapter
     private val mainVm: MainViewModel by activityViewModels()
 
@@ -24,12 +25,8 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         setDefaultListComponents()
-        myAdapter = HomeBtmCardsAdapter()
-        binding.rvBottomCards.adapter = myAdapter
-        binding.rvBottomCards.addItemDecoration(RvDecoration(30))
-        myAdapter.submitList(SampleData.homeBtmCards)
-
         registerScrollListener()
+        registerRvAdapter()
 
         return binding.root
     }
@@ -39,20 +36,52 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         setStatusBarColor(requireActivity(), R.color.grey_100)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        registerObserver()
+        mainVm.getAssets()
+    }
+
+    private fun registerRvAdapter() {
+        // asset list
+        assetAdapter = HomeAssetsAdapter()
+        with (binding.clAsset.rvAsset) {
+            visibility = View.VISIBLE
+            adapter = assetAdapter
+            addItemDecoration(RvDecoration(requireContext(), 0, 30))
+        }
+
+        // bottom cards
+        myAdapter = HomeBtmCardsAdapter()
+        with (binding.rvBottomCards) {
+            adapter = myAdapter
+            addItemDecoration(RvDecoration(requireContext(),10, 0))
+        }
+        myAdapter.submitList(SampleData.homeBtmCards)
+    }
+
+    private fun registerObserver() {
+        mainVm.assetResult.observe(viewLifecycleOwner) {
+            assetAdapter.submitList(it)
+        }
+    }
+
     private fun registerScrollListener() {
-        binding.scrollView.setOnScrollChangeListener { _, _, _, _, _ ->
+        binding.scrollView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             //val scrollY = binding.scrollView.scrollY // 스크롤 뷰가 스크롤된 정도, pixel
 
             val loc = IntArray(2)
-            binding.clSetting.getLocationOnScreen(loc)
+            binding.clConsume.clHomeWhiteCard.getLocationOnScreen(loc)
             val triggerPoint = loc[1]
 
             // 1. trigger point가 상단에 있다 (내려가야 됨)
-            if (triggerPoint > mainVm.tempConsume)
+            if (triggerPoint > mainVm.tempConsume) {
                 mainVm.checkConsumeFlag(true)
+            }
             // 2. trigger point가 하단에 있다 (올라가야 됨)
-            else
+            else {
                 mainVm.checkConsumeFlag(false)
+            }
         }
     }
 
@@ -83,4 +112,5 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             }
         }
     }
+
 }
