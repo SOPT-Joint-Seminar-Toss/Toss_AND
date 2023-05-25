@@ -33,10 +33,24 @@
 ## Foldering (to be updated...)
 
 ```
-📂 com.ddd.toss_and
-┣ 📂 data
-┃ ┣ 📂 model
-┃ ┃ ┣ 📂 response
-┃ ┃ ┃ ┣ 📜 BaseResponse.kt
-┃ ┃ ┃ ┣ 📜 BookDetailResponse.kt
+com.example.toss_and
+┣ data
+┃ ┣ model
+┃ ┃ ┣ ResAssetDto.kt
+┃ ┣ ApiFactory.kt
+┃ ┣ SrvcInterface.kt
+┣ presentation
+┃ ┣ gift
+┃ ┃ ┣
+┃ ┣ main
+┃ ┃ ┣ all
+┃ ┃ ┣ benefit
+┃ ┃ ┣ home
+┃ ┃ ┣ stock
+┃ ┃ ┣ tosspay
+┃ ┃ ┣ MainActivity.kt
+┃ ┃ ┣ MainViewModel.kt
+┃ ┣ purchase
+┃ ┃ ┣ 
+┣ util
 ```
