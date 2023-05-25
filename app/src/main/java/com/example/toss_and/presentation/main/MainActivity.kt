@@ -4,6 +4,7 @@ import android.animation.ValueAnimator
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
@@ -20,6 +21,7 @@ import com.example.toss_and.presentation.main.all.AllFragment
 import com.example.toss_and.presentation.main.benefit.BenefitFragment
 import com.example.toss_and.presentation.main.home.HomeFragment
 import com.example.toss_and.presentation.main.stock.StockFragment
+import com.example.toss_and.util.SampleData
 import com.example.toss_and.util.base.BindingActivity
 
 

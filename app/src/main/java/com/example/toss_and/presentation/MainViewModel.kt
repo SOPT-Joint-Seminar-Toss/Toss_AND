@@ -90,7 +90,7 @@ class MainViewModel : ViewModel() {
         var result = ""
         while (temp.length > 3) {
             result += "," + temp.substring(temp.length - 3)
-            temp =  temp.substring(0, temp.length - 3)
+            temp = temp.substring(0, temp.length - 3)
         }
         result = temp + result
         return result
