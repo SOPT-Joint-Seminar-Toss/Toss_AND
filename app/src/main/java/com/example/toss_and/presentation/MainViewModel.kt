@@ -35,7 +35,7 @@ class MainViewModel : ViewModel() {
                                     it.id,
                                     assignIcon(it.title),
                                     it.title,
-                                    it.balance.toString() + "원",
+                                    addComma(it.balance.toString()) + "원",
                                     true
                                 )
                             )
@@ -83,5 +83,16 @@ class MainViewModel : ViewModel() {
             "KB 국민은행 통장" -> R.drawable.icn_kb
             else -> 0
         }
+    }
+
+    private fun addComma(num: String): String {
+        var temp = num
+        var result = ""
+        while (temp.length > 3) {
+            result += "," + temp.substring(temp.length - 3)
+            temp =  temp.substring(0, temp.length - 3)
+        }
+        result = temp + result
+        return result
     }
 }

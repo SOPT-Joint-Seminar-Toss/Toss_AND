@@ -69,7 +69,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun registerScrollListener() {
-        binding.scrollView.setOnScrollChangeListener { _, _, _, _, _ ->
+        binding.scrollView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             //val scrollY = binding.scrollView.scrollY // 스크롤 뷰가 스크롤된 정도, pixel
 
             val loc = IntArray(2)
@@ -77,11 +77,13 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             val triggerPoint = loc[1]
 
             // 1. trigger point가 상단에 있다 (내려가야 됨)
-            if (triggerPoint > mainVm.tempConsume)
+            if (triggerPoint > mainVm.tempConsume) {
                 mainVm.checkConsumeFlag(true)
+            }
             // 2. trigger point가 하단에 있다 (올라가야 됨)
-            else
+            else {
                 mainVm.checkConsumeFlag(false)
+            }
         }
     }
 
