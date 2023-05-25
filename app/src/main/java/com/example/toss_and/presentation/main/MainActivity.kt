@@ -1,12 +1,16 @@
 package com.example.toss_and.presentation.main
 
+import android.animation.ValueAnimator
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewTreeObserver
 import android.view.WindowInsets
 import android.view.WindowInsetsController
+import android.widget.FrameLayout
 import androidx.activity.viewModels
+import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import com.example.toss_and.R
 import com.example.toss_and.databinding.ActivityMainBinding
@@ -33,8 +37,45 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         mainVm.assetResult.observe(this) {
             Log.d("ABC", it.toString())
         }
-    }
 
+        /* TODO: 해보는 중 */
+        mainVm.consumeFlag.observe(this) {
+            Log.e("ABC", "consumeFlag is: $it")
+            if (!it) { // scroll down 하다가 consumeFlag가 T->F 바뀌었다 : 뷰가 사라져야 됨
+                Log.e("ABC", "consumeFlag became FALSE!")
+                binding.clTempConsume.visibility = View.INVISIBLE
+            }
+            else { // scroll up 하다가 consumeFlag가 F->T 바뀌었다 : 뷰가 나타나야 됨
+                Log.e("ABC", "consumeFlag became TRUE!")
+                binding.clTempConsume.visibility = View.VISIBLE
+                val anim = ValueAnimator.ofInt(16, 0)
+                anim.addUpdateListener { valAnimator ->
+                    val layoutParams = binding.clTempConsume.layoutParams as FrameLayout.LayoutParams
+                    layoutParams.marginStart = valAnimator.animatedValue as Int
+                    layoutParams.marginEnd = valAnimator.animatedValue as Int
+                    binding.clTempConsume.layoutParams = layoutParams
+                }
+                anim.duration = 200
+                anim.start()
+            }
+        }
+
+        // TODO: 해보는 중
+        binding.clTempConsume.doOnLayout {
+            val result = IntArray(2) { 0 }
+            val obs = binding.clTempConsume.viewTreeObserver
+            obs.addOnGlobalLayoutListener(object: ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    binding.clTempConsume.getLocationOnScreen(result)
+
+                    Log.e("ABC", "mainVm.tempConsume is ${result[1]}")
+                    mainVm.tempConsume = result[1]
+
+                    obs.removeOnGlobalLayoutListener(this)
+                }
+            })
+        }
+    }
     private fun setNavigation() {
         binding.bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
