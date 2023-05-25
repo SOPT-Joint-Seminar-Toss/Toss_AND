@@ -4,7 +4,6 @@ import android.animation.ValueAnimator
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
@@ -41,12 +40,6 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     }
 
     private fun registerObserver() {
-        /* TODO: [서버통신] activity에서 쓴다면 이런 식으로 쓰면 되겠찌 >< */
-        mainVm.getAssets()
-        mainVm.assetResult.observe(this) {
-            Log.d("ABC", it.toString())
-        }
-
         /* 스크롤 중 특정 위치(소비 카드) 도달 시 clTempConsume이 사라지거나 나타난다 */
         mainVm.consumeFlag.observe(this) {
             if (!it) { // scroll down 하다가 consumeFlag가 T->F 바뀌었다 : 뷰가 사라져야 됨

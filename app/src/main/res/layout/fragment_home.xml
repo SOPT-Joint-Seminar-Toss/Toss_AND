@@ -38,7 +38,7 @@
                         android:id="@+id/iv_toss_logo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icn_toss_logo"
+                        android:src="@drawable/img_toss_logo"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -112,52 +112,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/iv_together_point" />
 
-                <!--
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_asset"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/rec_white_fill_20"
-                    android:paddingStart="22dp"
-                    android:paddingTop="27dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="24dp"
-                    app:layout_constraintEnd_toEndOf="@id/cl_top"
-                    app:layout_constraintStart_toStartOf="@id/cl_top"
-                    app:layout_constraintTop_toBottomOf="@id/iv_together_point">
-
-                    <TextView
-                        android:id="@+id/tv_label_asset"
-                        style="@style/AndroidTitle1Bold18"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="자산"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/iv_asset_next"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/icn_next"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_asset"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_label_asset"
-                        tools:listitem="@layout/item_home_asset" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                -->
-
                 <!-- card: 투자 -->
                 <include
                     android:id="@+id/cl_invest"
@@ -181,83 +135,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cl_invest" />
-
-                <!--
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_invest"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/rec_white_fill_20"
-                    android:paddingStart="22dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="34dp"
-                    app:layout_constraintEnd_toEndOf="@id/cl_top"
-                    app:layout_constraintStart_toStartOf="@id/cl_top"
-                    app:layout_constraintTop_toBottomOf="@id/cl_asset">
-
-                    <TextView
-                        android:id="@+id/tv_label_invest"
-                        style="@style/AndroidTitle1Bold18"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:text="투자"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <include
-                        android:id="@+id/cl_invest_account"
-                        layout="@layout/item_home_asset"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_label_invest"
-                        android:layout_marginTop="22dp" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_consume"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/rec_white_fill_20"
-                    android:paddingStart="22dp"
-                    android:paddingTop="27dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="24dp"
-                    app:layout_constraintEnd_toEndOf="@id/cl_top"
-                    app:layout_constraintStart_toStartOf="@id/cl_top"
-                    app:layout_constraintTop_toBottomOf="@id/cl_invest">
-
-                    <TextView
-                        android:id="@+id/tv_label_consume"
-                        style="@style/AndroidTitle1Bold18"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="소비"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <include
-                        android:id="@+id/cl_consume_spent"
-                        layout="@layout/item_home_asset"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_label_consume"
-                        android:layout_marginTop="20dp"
-                        />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                -->
 
                 <!-- 하단 RecyclerView: "bottom card" -->
                 <androidx.recyclerview.widget.RecyclerView

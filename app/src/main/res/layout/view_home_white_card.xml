@@ -31,7 +31,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="투자"/>
+                tools:text="투자" />
 
             <androidx.appcompat.widget.AppCompatButton
                 style="@style/ButtonStyleDefault"
@@ -52,8 +52,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
             android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/cl_title"
-            tools:listitem="@layout/item_home_asset" />
+            tools:listitem="@layout/item_home_asset"
+            tools:visibility="visible" />
 
         <include
             android:id="@+id/cl_list"

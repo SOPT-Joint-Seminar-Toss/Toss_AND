@@ -14,6 +14,7 @@ import com.example.toss_and.util.base.BindingFragment
 import com.example.toss_and.util.setStatusBarColor
 
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+    private lateinit var assetAdapter: HomeAssetsAdapter
     private lateinit var myAdapter: HomeBtmCardsAdapter
     private val mainVm: MainViewModel by activityViewModels()
 
@@ -24,12 +25,8 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         setDefaultListComponents()
-        myAdapter = HomeBtmCardsAdapter()
-        binding.rvBottomCards.adapter = myAdapter
-        binding.rvBottomCards.addItemDecoration(RvDecoration(30))
-        myAdapter.submitList(SampleData.homeBtmCards)
-
         registerScrollListener()
+        registerRvAdapter()
 
         return binding.root
     }
@@ -37,6 +34,37 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     override fun onResume() {
         super.onResume()
         setStatusBarColor(requireActivity(), R.color.grey_100)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        registerObserver()
+
+        mainVm.getAssets()
+    }
+
+    private fun registerRvAdapter() {
+        // asset list
+        assetAdapter = HomeAssetsAdapter()
+        with (binding.clAsset.rvAsset) {
+            visibility = View.VISIBLE
+            adapter = assetAdapter
+            addItemDecoration(RvDecoration(requireContext(), 0, 30))
+        }
+
+        // bottom cards
+        myAdapter = HomeBtmCardsAdapter()
+        with (binding.rvBottomCards) {
+            adapter = myAdapter
+            addItemDecoration(RvDecoration(requireContext(),10, 0))
+        }
+        myAdapter.submitList(SampleData.homeBtmCards)
+    }
+
+    private fun registerObserver() {
+        mainVm.assetResult.observe(viewLifecycleOwner) {
+            assetAdapter.submitList(it)
+        }
     }
 
     private fun registerScrollListener() {
@@ -83,4 +111,5 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             }
         }
     }
+
 }
