@@ -1,8 +1,10 @@
 package com.example.toss_and.presentation.purchase.screens
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.toss_and.databinding.ActivityPurchaseBinding
+import com.example.toss_and.presentation.gift.screens.GiftActivity
 import com.example.toss_and.presentation.purchase.adapters.TablayoutViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -18,6 +20,7 @@ class PurchaseActivity : AppCompatActivity() {
 
         initAdapter()
         initTabLayout()
+        goGiftActivity()
     }
 
     private fun initAdapter() {
@@ -34,5 +37,12 @@ class PurchaseActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tlTablayout, binding.vpViewpager) { tab, position ->
             tab.text = tabLabel[position]
         }.attach()
+    }
+
+    private fun goGiftActivity() {
+        binding.btnGift.setOnClickListener {
+            val intent = Intent(this, GiftActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
