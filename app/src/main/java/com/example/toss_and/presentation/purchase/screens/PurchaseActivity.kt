@@ -9,8 +9,8 @@ import com.bumptech.glide.Glide
 import com.example.toss_and.R
 import com.example.toss_and.databinding.ActivityPurchaseBinding
 import com.example.toss_and.presentation.gift.screens.GiftActivity
-import com.example.toss_and.presentation.purchase.PurchaseViewModel
 import com.example.toss_and.presentation.purchase.adapters.TablayoutViewPagerAdapter
+import com.example.toss_and.presentation.purchase.viewmodels.PurchaseViewModel
 import com.example.toss_and.util.base.BindingActivity
 import com.google.android.material.tabs.TabLayoutMediator
 

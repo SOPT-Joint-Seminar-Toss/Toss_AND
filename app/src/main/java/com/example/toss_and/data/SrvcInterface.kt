@@ -1,5 +1,6 @@
 package com.example.toss_and.data
 
+import com.example.toss_and.data.model.BrandconDto
 import com.example.toss_and.data.model.ResAssetDto
 import com.example.toss_and.data.model.ResLikeDto
 import retrofit2.Call
