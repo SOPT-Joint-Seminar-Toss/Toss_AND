@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.activityViewModels
 import com.example.toss_and.R
 import com.example.toss_and.databinding.FragmentHomeBinding
@@ -72,7 +73,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             //val scrollY = binding.scrollView.scrollY // 스크롤 뷰가 스크롤된 정도, pixel
 
             val loc = IntArray(2)
-            binding.clSetting.getLocationOnScreen(loc)
+            binding.clConsume.clHomeWhiteCard.getLocationOnScreen(loc)
             val triggerPoint = loc[1]
 
             // 1. trigger point가 상단에 있다 (내려가야 됨)
