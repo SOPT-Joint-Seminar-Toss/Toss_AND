@@ -17,6 +17,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.gift.screens.GiftActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".presentation.purchase.screens.PurchaseActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".presentation.main.MainActivity"
             android:exported="true">
             <intent-filter>

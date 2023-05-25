@@ -14,6 +14,12 @@ interface SrvcInterface {
         @Header("Authorization") authorization: String = "1"
     ): Call<ResAssetDto>
 
+    @GET("product/brand/{productId}")
+    fun getBrandconDetail(
+        @Path("productId") productId: Int,
+        @Header("Authorization") authorization: String = "1"
+    ): Call<BrandconDto>
+
     @PATCH("product/brand/{productId}")
     fun clickLike(
         @Header("Authorization") authorization: String = "1",
