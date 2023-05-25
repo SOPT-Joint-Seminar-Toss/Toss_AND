@@ -156,7 +156,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         val oldr = if (b) 50f else 0f
         val newr = if (b) 0f else 50f
         val anim = ValueAnimator.ofFloat(oldr, newr)
-        anim.duration = 200
+        anim.duration = 60
         anim.addUpdateListener { a ->
             val curr = a.animatedValue as Float
             with(binding.bottomNav.background as GradientDrawable) {
