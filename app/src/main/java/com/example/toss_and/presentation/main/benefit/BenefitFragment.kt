@@ -1,14 +1,13 @@
-package com.example.toss_and.presentation
+package com.example.toss_and.presentation.main.benefit
 
-import android.os.Bundle
-import android.view.View
 import com.example.toss_and.R
 import com.example.toss_and.databinding.FragmentBenefitBinding
 import com.example.toss_and.util.base.BindingFragment
+import com.example.toss_and.util.setStatusBarColor
 
 class BenefitFragment : BindingFragment<FragmentBenefitBinding>(R.layout.fragment_benefit) {
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onResume() {
+        super.onResume()
+        setStatusBarColor(requireActivity(), R.color.white)
     }
 }

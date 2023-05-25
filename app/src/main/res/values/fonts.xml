@@ -62,6 +62,12 @@
         <item name="android:letterSpacing">-0.03</item>
     </style>
 
+    <style name="AndroidBody5Bold14">
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:letterSpacing">-0.04</item>
+    </style>
+
     <style name="AndroidCaptionMedium10">
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
         <item name="android:textStyle">normal</item>
