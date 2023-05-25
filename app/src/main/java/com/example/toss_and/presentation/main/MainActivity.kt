@@ -1,14 +1,15 @@
 package com.example.toss_and.presentation.main
 
 import android.animation.ValueAnimator
+import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.WindowInsets
 import android.view.WindowInsetsController
-import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
@@ -32,48 +33,30 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         setNavigation()
         binding.bottomNav.selectedItemId = R.id.nav_home
 
-        /* TODO: activity에서 쓴다면 이런 식으로 쓰면 되겠찌 >< */
+        binding.clTempConsume.doOnLayout {
+            getLocation(it)
+        }
+
+        registerObserver()
+    }
+
+    private fun registerObserver() {
+        /* TODO: [서버통신] activity에서 쓴다면 이런 식으로 쓰면 되겠찌 >< */
         mainVm.getAssets()
         mainVm.assetResult.observe(this) {
             Log.d("ABC", it.toString())
         }
 
-        /* TODO: 해보는 중 */
+        /* 스크롤 중 특정 위치(소비 카드) 도달 시 clTempConsume이 사라지거나 나타난다 */
         mainVm.consumeFlag.observe(this) {
-            Log.e("ABC", "consumeFlag is: $it")
             if (!it) { // scroll down 하다가 consumeFlag가 T->F 바뀌었다 : 뷰가 사라져야 됨
-                Log.e("ABC", "consumeFlag became FALSE!")
                 binding.clTempConsume.visibility = View.INVISIBLE
+                expandBtnv(false)
             }
             else { // scroll up 하다가 consumeFlag가 F->T 바뀌었다 : 뷰가 나타나야 됨
-                Log.e("ABC", "consumeFlag became TRUE!")
-                binding.clTempConsume.visibility = View.VISIBLE
-                val anim = ValueAnimator.ofInt(16, 0)
-                anim.addUpdateListener { valAnimator ->
-                    val layoutParams = binding.clTempConsume.layoutParams as FrameLayout.LayoutParams
-                    layoutParams.marginStart = valAnimator.animatedValue as Int
-                    layoutParams.marginEnd = valAnimator.animatedValue as Int
-                    binding.clTempConsume.layoutParams = layoutParams
-                }
-                anim.duration = 200
-                anim.start()
+                expandConsume()
+                expandBtnv(true)
             }
-        }
-
-        // TODO: 해보는 중
-        binding.clTempConsume.doOnLayout {
-            val result = IntArray(2) { 0 }
-            val obs = binding.clTempConsume.viewTreeObserver
-            obs.addOnGlobalLayoutListener(object: ViewTreeObserver.OnGlobalLayoutListener {
-                override fun onGlobalLayout() {
-                    binding.clTempConsume.getLocationOnScreen(result)
-
-                    Log.e("ABC", "mainVm.tempConsume is ${result[1]}")
-                    mainVm.tempConsume = result[1]
-
-                    obs.removeOnGlobalLayoutListener(this)
-                }
-            })
         }
     }
     private fun setNavigation() {
@@ -133,5 +116,58 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                             or View.SYSTEM_UI_FLAG_FULLSCREEN
                     )
         }
+    }
+
+    // Get the Y coordinate(unit: pixel) of view(here: clTempConsume) on a screen
+    private fun getLocation(view: View) {
+        val result = IntArray(2) { 0 }
+        val obs = view.viewTreeObserver
+        obs.addOnGlobalLayoutListener(object: ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                view.getLocationOnScreen(result)
+                mainVm.tempConsume = result[1]
+
+                // Don't forget to remove the listener to avoid memory leaks
+                obs.removeOnGlobalLayoutListener(this)
+            }
+        })
+    }
+
+    // Horizontal margins of clTempConsume becomes 0 (looks like it expands its width)
+    private fun expandConsume() {
+        val view = binding.clTempConsume
+        view.visibility = View.VISIBLE
+
+        val aniExpand = ValueAnimator.ofInt(16, 0)
+        aniExpand.duration = 150
+        aniExpand.addUpdateListener { a ->
+            val curMargin = a.animatedValue as Int
+            val layoutParams = view.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.leftMargin = curMargin
+            layoutParams.rightMargin = curMargin
+
+            view.layoutParams = layoutParams
+        }
+        aniExpand.start()
+    }
+
+    // Radius of btnv's background changes (0->20 or 20->0)
+    private fun expandBtnv(b: Boolean) {
+        val oldr = if (b) 50f else 0f
+        val newr = if (b) 0f else 50f
+        val anim = ValueAnimator.ofFloat(oldr, newr)
+        anim.duration = 200
+        anim.addUpdateListener { a ->
+            val curr = a.animatedValue as Float
+            with(binding.bottomNav.background as GradientDrawable) {
+                cornerRadii = floatArrayOf(
+                    curr, curr, // Top-left corner
+                    curr, curr, // Top-right corner
+                    0f, 0f, // Bottom-left corner (no change)
+                    0f, 0f // Bottom-right corner (no change)
+                )
+            }
+        }
+        anim.start()
     }
 }
