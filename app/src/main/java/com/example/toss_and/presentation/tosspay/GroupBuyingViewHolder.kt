@@ -6,16 +6,10 @@ import com.example.toss_and.databinding.ItemGroupBuyingBinding
 import java.text.DecimalFormat
 
 class GroupBuyingViewHolder(
-    private val binding: ItemGroupBuyingBinding,
-    itemClickListener: GroupBuyingAdapter.ItemClickListener
+    private val binding: ItemGroupBuyingBinding
 ) :
     RecyclerView.ViewHolder(binding.root) {
 
-    init {
-        itemView.setOnClickListener {
-            itemClickListener.onItemClick(adapterPosition)
-        }
-    }
 
     fun onBind(item: ResponseGroupBuyingDto.Data, mockItem: RecycleGroupBuyingData) =
         with(binding) {

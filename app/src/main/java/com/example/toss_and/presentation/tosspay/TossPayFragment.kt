@@ -6,6 +6,9 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.toss_and.R
 import com.example.toss_and.databinding.FragmentTossPayBinding
 import com.example.toss_and.presentation.tosspay.ServicePool.tossPayService
@@ -18,18 +21,17 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragment_toss_pay),
-    GroupBuyingAdapter.ItemClickListener {
+class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragment_toss_pay) {
 
-    private var endDateTimeArray = arrayOf<String>("2023-06-18 00:00:00", "2023-06-18 00:00:00")
-    private var clickPosition = 0
+
+    private var endDateTimeArray = arrayOf<String>(getLocalTimeNow(), getLocalTimeNow())
+    private var centerPosition = 0
     private val handler = Handler(Looper.getMainLooper())
     private val updateTimeRunnable = object : Runnable {
         override fun run() {
             val remainingTime = getRemainingTime(
-                LocalDateTime.now()
-                    .format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")),
-                endDateTimeArray[clickPosition]
+                getLocalTimeNow(),
+                endDateTimeArray[centerPosition]
             )
             binding.tvEndTime.text = remainingTime
             Log.d("토스 페이 남은 시간 카운트", remainingTime)
@@ -68,9 +70,12 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
             ) {
                 if (response.isSuccessful) {
                     val responseProductList = response.body()?.data
-                    val groupBuyingAdapter = GroupBuyingAdapter(this@TossPayFragment)
+                    val groupBuyingAdapter = GroupBuyingAdapter()
+                    binding.rvGroupBuying.layoutManager =
+                        LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                     binding.rvGroupBuying.adapter = groupBuyingAdapter
                     val viewModel by viewModels<GroupBuyingViewModel>()
+
                     groupBuyingAdapter.setProductList(
                         responseProductList!!,
                         viewModel.mockProductList
@@ -78,6 +83,24 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
                     endDateTimeArray =
                         arrayOf(responseProductList[0].endDate!!, responseProductList[1].endDate!!)
                     Log.d("토스 페이 endDate 변경", endDateTimeArray[1])
+
+
+                    val snapHelper = LinearSnapHelper()
+                    snapHelper.attachToRecyclerView(binding.rvGroupBuying)
+                    binding.rvGroupBuying.addOnScrollListener(object :
+                        RecyclerView.OnScrollListener() {
+                        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                            super.onScrolled(recyclerView, dx, dy)
+                            val layoutManager = recyclerView.layoutManager
+                            val centerView = snapHelper.findSnapView(layoutManager)
+                            val position = centerView?.let { layoutManager?.getPosition(it) }
+                            if (position != null && position >= 0) {
+                                centerPosition = position
+                                showCurrentItem(centerPosition)
+                            }
+                        }
+                    })
+
                 } else {
                     Log.e("유저 프래그먼트 에러 - groupBuying", response.toString())
                 }
@@ -132,13 +155,12 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
         }
     }
 
-    override fun onItemClick(position: Int) {
-        Log.d("토스 페이 클릭 포지션", position.toString())
-        clickPosition = position
-        binding.tvEndTime.text = getRemainingTime(
-            LocalDateTime.now()
-                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")),
-            endDateTimeArray[position]
-        )
+    private fun getLocalTimeNow(): String {
+        return LocalDateTime.now()
+            .format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"))
+    }
+
+    private fun showCurrentItem(position: Int) {
+        binding.tvEndTime.text = getRemainingTime(getLocalTimeNow(), endDateTimeArray[position])
     }
 }
