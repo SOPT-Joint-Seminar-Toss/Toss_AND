@@ -14,12 +14,12 @@ import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import com.example.toss_and.R
 import com.example.toss_and.databinding.ActivityMainBinding
-import com.example.toss_and.presentation.main.viewmodels.MainViewModel
-import com.example.toss_and.presentation.TempPayFragment
+import com.example.toss_and.presentation.MainViewModel
 import com.example.toss_and.presentation.main.all.AllFragment
 import com.example.toss_and.presentation.main.benefit.BenefitFragment
 import com.example.toss_and.presentation.main.home.HomeFragment
 import com.example.toss_and.presentation.main.stock.StockFragment
+import com.example.toss_and.presentation.tosspay.screens.TossPayFragment
 import com.example.toss_and.util.base.BindingActivity
 
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
@@ -44,13 +44,13 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
             if (!it) { // scroll down 하다가 consumeFlag가 T->F 바뀌었다 : 뷰가 사라져야 됨
                 binding.clTempConsume.visibility = View.INVISIBLE
                 expandBtnv(false)
-            }
-            else { // scroll up 하다가 consumeFlag가 F->T 바뀌었다 : 뷰가 나타나야 됨
+            } else { // scroll up 하다가 consumeFlag가 F->T 바뀌었다 : 뷰가 나타나야 됨
                 expandConsume()
                 expandBtnv(true)
             }
         }
     }
+
     private fun setNavigation() {
         binding.bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
@@ -65,7 +65,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                 }
 
                 R.id.nav_tosspay -> {
-                    replaceFragment(TempPayFragment())
+                    replaceFragment(TossPayFragment())
                     return@setOnItemSelectedListener true
                 }
 
@@ -114,7 +114,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     private fun getLocation(view: View) {
         val result = IntArray(2) { 0 }
         val obs = view.viewTreeObserver
-        obs.addOnGlobalLayoutListener(object: ViewTreeObserver.OnGlobalLayoutListener {
+        obs.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 view.getLocationOnScreen(result)
                 mainVm.tempConsume = result[1]
