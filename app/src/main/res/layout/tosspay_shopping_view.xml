@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="67dp">
+
+    <ImageView
+        android:id="@+id/iv_shopping"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="22dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/img_cashback3x" />
+
+    <TextView
+        android:id="@+id/tv_shopping"
+        style="@style/AndroidSubtitleBold15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:text="안내 메시지"
+        android:textColor="@color/grey_400"
+        app:layout_constraintStart_toEndOf="@id/iv_shopping"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_shopping_detail"
+        style="@style/AndroidBody3Medium11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="세부사항"
+        android:textColor="@color/grey_300"
+        app:layout_constraintStart_toStartOf="@id/tv_shopping"
+        app:layout_constraintTop_toBottomOf="@id/tv_shopping" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="23dp"
+        android:src="@drawable/icn_right_vector_tosspay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

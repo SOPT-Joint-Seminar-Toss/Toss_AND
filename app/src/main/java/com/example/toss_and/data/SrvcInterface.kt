@@ -4,6 +4,8 @@ import com.example.toss_and.data.model.BrandconDto
 import com.example.toss_and.data.model.ResAssetDto
 import com.example.toss_and.data.model.ResLikeDto
 import com.example.toss_and.data.model.ResponseBrandconDto
+import com.example.toss_and.data.model.ResponseGiftDto
+import com.example.toss_and.data.model.RequestGiftDto
 import com.example.toss_and.data.model.ResponseGroupBuyingDto
 import retrofit2.Call
 import retrofit2.http.Body
@@ -31,6 +33,13 @@ interface SrvcInterface {
         @Path("productId") productId: Int
     ): Call<ResLikeDto>
 
+
+    @POST("product/brand/present/{productId}")
+    fun sendGift(
+        @Body body: RequestGiftDto,
+        @Path("productId") productId: Int,
+        @Header("Authorization") authorization: String = "1",
+    ): Call<ResponseGiftDto>
 
     @GET("product")
     fun getProduct(

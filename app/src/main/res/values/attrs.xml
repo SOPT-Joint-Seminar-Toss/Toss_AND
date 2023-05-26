@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CategoryButton">
+        <attr name="image" format="reference|integer" />
+        <attr name="title" format="reference|string" />
+    </declare-styleable>
+
+    <declare-styleable name="ShoppingView">
+        <attr name="image" />
+        <attr name="title" />
+        <attr name="detail" format="reference|string" />
+    </declare-styleable>
+
+
+    <declare-styleable name="RankingView">
+        <attr name="image" />
+        <attr name="title" />
+        <attr name="rank" format="reference|integer" />
+    </declare-styleable>
+</resources>
