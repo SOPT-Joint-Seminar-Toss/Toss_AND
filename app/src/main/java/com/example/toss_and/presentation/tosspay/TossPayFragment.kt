@@ -5,7 +5,6 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.toss_and.R
 import com.example.toss_and.databinding.FragmentTossPayBinding
@@ -22,15 +21,18 @@ import java.util.Locale
 class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragment_toss_pay),
     GroupBuyingAdapter.ItemClickListener {
 
-    lateinit var endDate: String
+    private var endDateTimeArray = arrayOf<String>("2023-06-18 00:00:00", "2023-06-18 00:00:00")
+    private var clickPosition = 0
     private val handler = Handler(Looper.getMainLooper())
     private val updateTimeRunnable = object : Runnable {
         override fun run() {
-            val startTime = LocalDateTime.now()
-                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"))
-            binding.tvEndTime.text = startTime
-////            binding.tvEndTime.text = getRemainingTime(startTime, startTime)
-            Log.d("토스 페이 현재 시간 카운트", startTime)
+            val remainingTime = getRemainingTime(
+                LocalDateTime.now()
+                    .format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")),
+                endDateTimeArray[clickPosition]
+            )
+            binding.tvEndTime.text = remainingTime
+            Log.d("토스 페이 남은 시간 카운트", remainingTime)
             handler.postDelayed(this, 1000) //1000ms = 1초 간격으로 업데이트
         }
     }
@@ -65,32 +67,22 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
                 response: Response<ResponseGroupBuyingDto>
             ) {
                 if (response.isSuccessful) {
-                    Log.d("유저 프래그먼트 정보 조회 - groupBuying", response.toString())
-
+                    val responseProductList = response.body()?.data
                     val groupBuyingAdapter = GroupBuyingAdapter(this@TossPayFragment)
                     binding.rvGroupBuying.adapter = groupBuyingAdapter
-                    val responseProductList = response.body()?.data
                     val viewModel by viewModels<GroupBuyingViewModel>()
                     groupBuyingAdapter.setProductList(
                         responseProductList!!,
                         viewModel.mockProductList
                     )
-//                    groupBuyingAdapter.setOnItemClickListener(object:GroupBuyingAdapter.OnItemClickListener{
-//                        override fun onItemClick(position:Int){
-//                            endDate = responseProductList[position].endDate!!
-//                            Log.d("토스 페이 endDate 변경", endDate)
-//                        }
-//                    })
-
-//                    var endTime = responseProductList[0].endDate
-//                    var startTime = LocalDateTime.now()
-//                        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"))
-//                    binding.tvTextViewEndTime.text = getRemainingTime(startTime,endTime!!)
-
+                    endDateTimeArray =
+                        arrayOf(responseProductList[0].endDate!!, responseProductList[1].endDate!!)
+                    Log.d("토스 페이 endDate 변경", endDateTimeArray[1])
                 } else {
                     Log.e("유저 프래그먼트 에러 - groupBuying", response.toString())
                 }
             }
+
             override fun onFailure(call: Call<ResponseGroupBuyingDto>, t: Throwable) {
                 Log.e("유저 프래그먼트 에러 - groupBuying", "서버 통신 장애")
             }
@@ -126,7 +118,7 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
         val startDate = format.parse(date1)
         val endDate = format.parse(date2)
 
-        if (startDate != null && endDate != null) {
+        return if (startDate != null && endDate != null) {
             val diff = endDate.time - startDate.time
 
             val days = diff / (24 * 60 * 60 * 1000)
@@ -134,15 +126,19 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
             val minutes = (diff % (60 * 60 * 1000)) / (60 * 1000)
             val seconds = (diff % (60 * 1000)) / 1000
 
-            return "%02d일 %02d:%02d:%02d".format(days, hours, minutes, seconds)
+            "%02d일 %02d:%02d:%02d 남음".format(days, hours, minutes, seconds)
         } else {
-            return "Invalid Dates"
+            "Invalid Dates"
         }
     }
 
     override fun onItemClick(position: Int) {
         Log.d("토스 페이 클릭 포지션", position.toString())
-        Toast.makeText(requireContext(), "Item clicked at position $position", Toast.LENGTH_SHORT)
-            .show()
+        clickPosition = position
+        binding.tvEndTime.text = getRemainingTime(
+            LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")),
+            endDateTimeArray[position]
+        )
     }
 }

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toss_and.databinding.ItemBrandconBinding
+
 class BrandconAdapter : RecyclerView.Adapter<BrandconViewHolder>() {
     private var itemList: List<ResponseBrandconDto.Data> = emptyList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BrandconViewHolder {
