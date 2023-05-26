@@ -27,7 +27,7 @@ data class BrandconDto(
         @SerialName("point")
         val point: Int,
         @SerialName("like")
-        val isLike: Boolean,
+        val like: Boolean,
         @SerialName("expiration")
         val expiration: Int,
         @SerialName("productInfo")

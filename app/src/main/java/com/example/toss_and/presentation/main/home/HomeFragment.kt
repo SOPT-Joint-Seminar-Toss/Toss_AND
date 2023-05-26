@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.toss_and.R
 import com.example.toss_and.databinding.FragmentHomeBinding
-import com.example.toss_and.presentation.MainViewModel
+import com.example.toss_and.presentation.main.viewmodels.MainViewModel
 import com.example.toss_and.util.RvDecoration
 import com.example.toss_and.util.SampleData
 import com.example.toss_and.util.base.BindingFragment

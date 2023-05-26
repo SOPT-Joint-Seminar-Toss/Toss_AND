@@ -3,7 +3,6 @@ package com.example.toss_and.presentation.purchase.screens
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.example.toss_and.R
@@ -12,7 +11,9 @@ import com.example.toss_and.presentation.gift.screens.GiftActivity
 import com.example.toss_and.presentation.purchase.adapters.TablayoutViewPagerAdapter
 import com.example.toss_and.presentation.purchase.viewmodels.PurchaseViewModel
 import com.example.toss_and.util.base.BindingActivity
+import com.example.toss_and.util.showToast
 import com.google.android.material.tabs.TabLayoutMediator
+import java.text.DecimalFormat
 
 class PurchaseActivity : BindingActivity<ActivityPurchaseBinding>(R.layout.activity_purchase) {
     private lateinit var tablayoutViewPagerAdapter: TablayoutViewPagerAdapter
@@ -39,10 +40,12 @@ class PurchaseActivity : BindingActivity<ActivityPurchaseBinding>(R.layout.activ
                     .into(ivProduct)
                 tvBrand.text = it.data.brandTitle
                 tvItemName.text = it.data.productTitle
-                tvItemPrice.text = it.data.price.toString()+"원"
+                val priceFormatter = DecimalFormat("###,###")
+                val formattedStringPrice: String = priceFormatter.format(it.data.price)
+                tvItemPrice.text = formattedStringPrice+"원"
                 tvPoint.text = it.data.point.toString()+"원"
                 tvValidityDate.text = it.data.expiration.toString()+"일"
-                if (it.data.isLike) {
+                if (it.data.like) {
                     btnHeart.setImageResource(R.drawable.icn_heart_active)
                 } else {
                     btnHeart.setImageResource(R.drawable.icn_heart_inactive)
@@ -52,7 +55,7 @@ class PurchaseActivity : BindingActivity<ActivityPurchaseBinding>(R.layout.activ
 
         purchaseVm.likeResult.observe(this) {
             if (it) {
-                Toast.makeText(this, "이 상품을 찜했습니다!", Toast.LENGTH_SHORT).show()
+                showToast( "이 상품을 찜했습니다!")
             }
         }
     }
