@@ -1,4 +1,4 @@
-package com.example.toss_and.presentation
+package com.example.toss_and.presentation.main.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.LiveData
