@@ -5,8 +5,11 @@ import android.content.Context
 import android.os.Build
 import android.util.DisplayMetrics
 import android.util.TypedValue
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 
 fun setStatusBarColor(activity: Activity, color: Int) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -24,4 +27,8 @@ fun convertPixelToDp(context: Context, px: Int): Int {
 fun convertDpToPixel(context: Context, dp: Float): Int {
     val metrics = context.resources.displayMetrics
     return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, metrics).toInt()
+}
+
+fun Context.showToast(msg: String) {
+    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 }

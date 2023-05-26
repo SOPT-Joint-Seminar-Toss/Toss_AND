@@ -3,21 +3,28 @@ package com.example.toss_and.presentation.gift.screens
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.viewModels
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import com.example.toss_and.databinding.ActivityGiftBinding
+import com.example.toss_and.presentation.gift.viewmodels.GiftViewModel
+import com.example.toss_and.util.showToast
 
 class GiftActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGiftBinding
+    private val giftVm by viewModels<GiftViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGiftBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         goBack()
+        registerObserver()
         editMessage()
         completeMessage()
         observeMessage()
@@ -27,6 +34,25 @@ class GiftActivity : AppCompatActivity() {
     private fun goBack() {
         binding.btnBack.setOnClickListener {
             finish()
+        }
+    }
+
+    private fun registerObserver() {
+        binding.btnComplete.setOnClickListener {
+            giftVm.sentGift(
+                "BALLOON",
+                binding.etMessage.text.toString(),
+                1
+            )
+        }
+        giftVm.giftResult.observe(this) {
+            if (it.code == 200) {
+                Log.d("giftActivity", "200")
+                showToast("카드가 저장되었습니다.")
+            } else {
+                Log.d("giftActivity", "400")
+                showToast("카드 저장에 실패했습니다.")
+            }
         }
     }
 
