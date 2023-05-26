@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <ImageView
+        android:id="@+id/iv_brandcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="23dp"
+        android:src="@drawable/img_coffee_small_aos3x"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_brancon_detail"
+        style="@style/AndroidBody3Medium11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="22dp"
+        android:maxLines="1"
+        android:text="브랜드 | 브랜드콘 제목"
+        android:textColor="@color/grey_300"
+        app:layout_constraintStart_toEndOf="@id/iv_brandcon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.55" />
+
+    <TextView
+        android:id="@+id/tv_brancon_price"
+        style="@style/AndroidSubtitleBold15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="4dp"
+        android:text="브랜드콘 가격"
+        android:textColor="@color/grey_500"
+        app:layout_constraintStart_toEndOf="@id/iv_brandcon"
+        app:layout_constraintTop_toBottomOf="@id/tv_brancon_detail" />
+
+
+    <TextView
+        android:id="@+id/tv_brancon_point"
+        style="@style/AndroidCaptionMedium10"
+        android:layout_width="63dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="23dp"
+        android:background="@drawable/rectangle_lightblue_52dp"
+        android:gravity="center"
+        android:text="적립 가격"
+        android:textColor="@color/darkblue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
