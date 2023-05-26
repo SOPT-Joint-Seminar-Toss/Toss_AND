@@ -12,6 +12,7 @@ import com.example.toss_and.presentation.gift.screens.GiftActivity
 import com.example.toss_and.presentation.purchase.adapters.TablayoutViewPagerAdapter
 import com.example.toss_and.presentation.purchase.viewmodels.PurchaseViewModel
 import com.example.toss_and.util.base.BindingActivity
+import com.example.toss_and.util.showToast
 import com.google.android.material.tabs.TabLayoutMediator
 
 class PurchaseActivity : BindingActivity<ActivityPurchaseBinding>(R.layout.activity_purchase) {
@@ -52,7 +53,7 @@ class PurchaseActivity : BindingActivity<ActivityPurchaseBinding>(R.layout.activ
 
         purchaseVm.likeResult.observe(this) {
             if (it) {
-                Toast.makeText(this, "이 상품을 찜했습니다!", Toast.LENGTH_SHORT).show()
+                showToast( "이 상품을 찜했습니다!")
             }
         }
     }
