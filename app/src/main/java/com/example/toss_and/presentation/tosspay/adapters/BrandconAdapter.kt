@@ -1,8 +1,9 @@
-package com.example.toss_and.presentation.tosspay
+package com.example.toss_and.presentation.tosspay.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.toss_and.data.model.ResponseBrandconDto
 import com.example.toss_and.databinding.ItemBrandconBinding
 
 class BrandconAdapter : RecyclerView.Adapter<BrandconViewHolder>() {

@@ -1,8 +1,10 @@
-package com.example.toss_and.presentation.tosspay
+package com.example.toss_and.presentation.tosspay.adapters
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.toss_and.data.model.ResponseGroupBuyingDto
 import com.example.toss_and.databinding.ItemGroupBuyingBinding
+import com.example.toss_and.presentation.tosspay.viewmodels.RecycleGroupBuyingData
 import java.text.DecimalFormat
 
 class GroupBuyingViewHolder(

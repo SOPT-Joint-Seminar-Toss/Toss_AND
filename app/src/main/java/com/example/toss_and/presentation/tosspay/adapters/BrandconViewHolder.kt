@@ -1,7 +1,8 @@
-package com.example.toss_and.presentation.tosspay
+package com.example.toss_and.presentation.tosspay.adapters
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.toss_and.data.model.ResponseBrandconDto
 import com.example.toss_and.databinding.ItemBrandconBinding
 import java.text.DecimalFormat
 

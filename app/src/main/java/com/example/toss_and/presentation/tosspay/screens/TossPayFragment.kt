@@ -1,4 +1,4 @@
-package com.example.toss_and.presentation.tosspay
+package com.example.toss_and.presentation.tosspay.screens
 
 import android.os.Bundle
 import android.os.Handler
@@ -10,8 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.toss_and.R
+import com.example.toss_and.data.ServicePool.service
+import com.example.toss_and.data.model.ResponseBrandconDto
+import com.example.toss_and.data.model.ResponseGroupBuyingDto
 import com.example.toss_and.databinding.FragmentTossPayBinding
-import com.example.toss_and.presentation.tosspay.ServicePool.tossPayService
+import com.example.toss_and.presentation.tosspay.adapters.GroupBuyingAdapter
+import com.example.toss_and.presentation.tosspay.viewmodels.GroupBuyingViewModel
+import com.example.toss_and.presentation.tosspay.adapters.BrandconAdapter
 import com.example.toss_and.util.base.BindingFragment
 import retrofit2.Call
 import retrofit2.Callback
@@ -64,7 +69,7 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
     /** 최저가 공동구매 recycler view 초기화 */
     private fun initGroupBuyingRecycler() {
 
-        tossPayService.getProduct().enqueue(object : Callback<ResponseGroupBuyingDto> {
+        service.getProduct().enqueue(object : Callback<ResponseGroupBuyingDto> {
             override fun onResponse(
                 call: Call<ResponseGroupBuyingDto>,
                 response: Response<ResponseGroupBuyingDto>
@@ -117,7 +122,7 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
     private fun initBrandconRecycler() {
         val brandconAdapter = BrandconAdapter()
         binding.rvBrandcon.adapter = brandconAdapter
-        tossPayService.getBrand().enqueue(object : Callback<ResponseBrandconDto> {
+        service.getBrand().enqueue(object : Callback<ResponseBrandconDto> {
             override fun onResponse(
                 call: Call<ResponseBrandconDto>,
                 response: Response<ResponseBrandconDto>

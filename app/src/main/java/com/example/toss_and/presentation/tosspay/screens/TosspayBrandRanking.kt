@@ -1,4 +1,4 @@
-package com.example.toss_and.presentation.tosspay
+package com.example.toss_and.presentation.tosspay.screens
 
 import android.content.Context
 import android.util.AttributeSet

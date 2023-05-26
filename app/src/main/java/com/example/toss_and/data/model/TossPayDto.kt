@@ -1,4 +1,4 @@
-package com.example.toss_and.presentation.tosspay
+package com.example.toss_and.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

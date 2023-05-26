@@ -1,9 +1,11 @@
-package com.example.toss_and.presentation.tosspay
+package com.example.toss_and.presentation.tosspay.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.toss_and.data.model.ResponseGroupBuyingDto
 import com.example.toss_and.databinding.ItemGroupBuyingBinding
+import com.example.toss_and.presentation.tosspay.viewmodels.RecycleGroupBuyingData
 
 class GroupBuyingAdapter() :
     RecyclerView.Adapter<GroupBuyingViewHolder>() {

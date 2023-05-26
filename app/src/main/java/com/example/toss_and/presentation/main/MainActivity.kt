@@ -19,7 +19,7 @@ import com.example.toss_and.presentation.main.all.AllFragment
 import com.example.toss_and.presentation.main.benefit.BenefitFragment
 import com.example.toss_and.presentation.main.home.HomeFragment
 import com.example.toss_and.presentation.main.stock.StockFragment
-import com.example.toss_and.presentation.tosspay.TossPayFragment
+import com.example.toss_and.presentation.tosspay.screens.TossPayFragment
 import com.example.toss_and.util.base.BindingActivity
 
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {

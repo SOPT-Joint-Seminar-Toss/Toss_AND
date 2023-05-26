@@ -1,4 +1,4 @@
-package com.example.toss_and.presentation.tosspay
+package com.example.toss_and.presentation.tosspay.viewmodels
 
 import androidx.annotation.DrawableRes
 import androidx.lifecycle.ViewModel
