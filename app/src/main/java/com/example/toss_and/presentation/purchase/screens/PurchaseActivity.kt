@@ -42,7 +42,7 @@ class PurchaseActivity : BindingActivity<ActivityPurchaseBinding>(R.layout.activ
                 tvItemPrice.text = it.data.price.toString()+"원"
                 tvPoint.text = it.data.point.toString()+"원"
                 tvValidityDate.text = it.data.expiration.toString()+"일"
-                if (it.data.isLike) {
+                if (it.data.like) {
                     btnHeart.setImageResource(R.drawable.icn_heart_active)
                 } else {
                     btnHeart.setImageResource(R.drawable.icn_heart_inactive)
