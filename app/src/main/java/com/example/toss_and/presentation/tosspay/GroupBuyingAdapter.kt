@@ -10,7 +10,6 @@ class GroupBuyingAdapter() :
     private var itemList: List<ResponseGroupBuyingDto.Data> = emptyList()
     private var mockItemList: List<RecycleGroupBuyingData> = emptyList()
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupBuyingViewHolder {
         val binding =
             ItemGroupBuyingBinding.inflate(LayoutInflater.from(parent.context), parent, false)

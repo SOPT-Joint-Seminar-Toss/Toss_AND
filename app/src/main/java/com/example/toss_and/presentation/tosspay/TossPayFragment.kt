@@ -46,13 +46,7 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
 
     override fun onDestroyView() {
         super.onDestroyView()
-        handler.removeCallbacks(updateTimeRunnable)
-        Log.d("현재 시간 핸들러 삭제", "성공~")
-    }
-
-    private fun updateTime() {
-        handler.removeCallbacks(updateTimeRunnable)
-        handler.post(updateTimeRunnable)
+        handler.removeCallbacks(updateTimeRunnable) // fragment가 destroy 되면 러너블 객체 삭제
     }
 
     private fun initView() {
@@ -61,6 +55,13 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
         updateTime()
     }
 
+    /** updateTimeRunnable 갱신 */
+    private fun updateTime() {
+        handler.removeCallbacks(updateTimeRunnable)
+        handler.post(updateTimeRunnable)
+    }
+
+    /** 최저가 공동구매 recycler view 초기화 */
     private fun initGroupBuyingRecycler() {
 
         tossPayService.getProduct().enqueue(object : Callback<ResponseGroupBuyingDto> {
@@ -112,6 +113,7 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
         })
     }
 
+    /** 인기브랜드콘 recycler view 초기화 */
     private fun initBrandconRecycler() {
         val brandconAdapter = BrandconAdapter()
         binding.rvBrandcon.adapter = brandconAdapter
@@ -136,6 +138,7 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
         })
     }
 
+    /** 두 날짜를 비교한 뒤 차이를 return */
     fun getRemainingTime(date1: String, date2: String): String {
         val format = SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault())
         val startDate = format.parse(date1)
@@ -155,12 +158,15 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
         }
     }
 
+    /** tv_end_time에 남은 시간 갱신 */
+    private fun showCurrentItem(position: Int) {
+        binding.tvEndTime.text = getRemainingTime(getLocalTimeNow(), endDateTimeArray[position])
+    }
+
+    /** 현재 localDateTime을 return */
     private fun getLocalTimeNow(): String {
         return LocalDateTime.now()
             .format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"))
     }
 
-    private fun showCurrentItem(position: Int) {
-        binding.tvEndTime.text = getRemainingTime(getLocalTimeNow(), endDateTimeArray[position])
-    }
 }
