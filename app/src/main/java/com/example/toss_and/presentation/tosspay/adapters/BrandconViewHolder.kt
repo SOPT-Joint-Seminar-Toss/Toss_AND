@@ -6,8 +6,18 @@ import com.example.toss_and.data.model.ResponseBrandconDto
 import com.example.toss_and.databinding.ItemBrandconBinding
 import java.text.DecimalFormat
 
-class BrandconViewHolder(private val binding: ItemBrandconBinding) :
+class BrandconViewHolder(
+    private val binding: ItemBrandconBinding,
+    itemClickListener: BrandconAdapter.ItemClickListener
+) :
     RecyclerView.ViewHolder(binding.root) {
+
+    init {
+        itemView.setOnClickListener {
+            itemClickListener.onItemClick(adapterPosition)
+        }
+    }
+
     fun onBind(item: ResponseBrandconDto.Data) {
         val dec = DecimalFormat("#,###")
         val price = dec.format(item.price).toString()

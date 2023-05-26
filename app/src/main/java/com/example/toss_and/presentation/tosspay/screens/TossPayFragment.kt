@@ -1,5 +1,6 @@
 package com.example.toss_and.presentation.tosspay.screens
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -14,6 +15,7 @@ import com.example.toss_and.data.ServicePool.service
 import com.example.toss_and.data.model.ResponseBrandconDto
 import com.example.toss_and.data.model.ResponseGroupBuyingDto
 import com.example.toss_and.databinding.FragmentTossPayBinding
+import com.example.toss_and.presentation.purchase.screens.PurchaseActivity
 import com.example.toss_and.presentation.tosspay.adapters.GroupBuyingAdapter
 import com.example.toss_and.presentation.tosspay.viewmodels.GroupBuyingViewModel
 import com.example.toss_and.presentation.tosspay.adapters.BrandconAdapter
@@ -26,7 +28,8 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragment_toss_pay) {
+class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragment_toss_pay),
+    BrandconAdapter.ItemClickListener {
 
 
     private var endDateTimeArray = arrayOf<String>(getLocalTimeNow(), getLocalTimeNow())
@@ -120,7 +123,7 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
 
     /** 인기브랜드콘 recycler view 초기화 */
     private fun initBrandconRecycler() {
-        val brandconAdapter = BrandconAdapter()
+        val brandconAdapter = BrandconAdapter(this)
         binding.rvBrandcon.adapter = brandconAdapter
         service.getBrand().enqueue(object : Callback<ResponseBrandconDto> {
             override fun onResponse(
@@ -174,4 +177,10 @@ class TossPayFragment : BindingFragment<FragmentTossPayBinding>(R.layout.fragmen
             .format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"))
     }
 
+    override fun onItemClick(position: Int) {
+        if (position == 0) {
+            val intent = Intent(requireContext(), PurchaseActivity::class.java)
+            startActivity(intent)
+        }
+    }
 }
