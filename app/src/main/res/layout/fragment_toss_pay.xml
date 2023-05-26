@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
+
+    <data></data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_toss_pay_setting"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="10dp"
+            android:foregroundGravity="center"
+            android:src="@drawable/icn_setting"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_toss_pay_setting">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_toss_pay_title"
+                    style="@style/AndroidHeader1Bold22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="7dp"
+                    android:text="토스페이"
+                    android:textColor="@color/grey_600"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_search"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginHorizontal="22dp"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/grey_100"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_toss_pay_title">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="7dp"
+                        android:src="@drawable/icn_search_tosspay" />
+
+                    <TextView
+                        style="@style/AndroidBody1Medium14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="42dp"
+                        android:text="상품을 검색해보세요"
+                        android:textColor="@color/grey_300" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_low_price"
+                    style="@style/AndroidTitle1Bold18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:text="최저가 공동구매"
+                    android:textColor="@color/grey_500"
+                    app:layout_constraintStart_toStartOf="@id/tv_toss_pay_title"
+                    app:layout_constraintTop_toBottomOf="@id/cv_search" />
+
+                <TextView
+                    android:id="@+id/tv_end_time"
+                    style="@style/AndroidBody2Medium12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="21dp"
+                    android:text="초기값"
+                    android:textColor="#ef4452"
+                    app:layout_constraintStart_toEndOf="@id/tv_low_price"
+                    app:layout_constraintTop_toBottomOf="@id/cv_search" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_group_buying"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingStart="22dp"
+                    android:paddingEnd="5dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_low_price"
+                    tools:listitem="@layout/item_group_buying" />
+
+                <TextView
+                    android:id="@+id/tv_more1"
+                    style="@style/AndroidButtonMedium14"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="28dp"
+                    android:background="@drawable/tosspay_edge"
+                    android:drawablePadding="0dp"
+                    android:gravity="center"
+                    android:text="         최저가 공동구매 상품 더 보기"
+                    android:textColor="@color/grey_300"
+                    app:drawableRightCompat="@drawable/icn_right_vector_tosspay"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_group_buying" />
+
+                <View
+                    android:id="@+id/view_grey1"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="@color/grey_100"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_more1" />
+
+                <TextView
+                    android:id="@+id/tv_category"
+                    style="@style/AndroidTitle1Bold18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="브랜드콘"
+                    android:textColor="@color/grey_600"
+                    app:layout_constraintStart_toStartOf="@id/tv_toss_pay_title"
+                    app:layout_constraintTop_toBottomOf="@id/view_grey1" />
+
+                <TextView
+                    android:id="@+id/tv_brandcon_detail"
+                    style="@style/AndroidBody1Medium14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="11dp"
+                    android:text="살 때마다 토스포인트 3% 적립"
+                    android:textColor="@color/blue"
+                    app:layout_constraintStart_toStartOf="@id/tv_toss_pay_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_category" />
+
+                <com.example.toss_and.presentation.tosspay.screens.CategoryButton
+                    android:id="@+id/item_brandcon1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:image="@drawable/img_cafe3x"
+                    app:layout_constraintStart_toStartOf="@id/tv_toss_pay_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_brandcon_detail"
+                    app:title="카페" />
+
+                <com.example.toss_and.presentation.tosspay.screens.CategoryButton
+                    android:id="@+id/item_brandcon2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="16dp"
+                    app:image="@drawable/img_coupon3x"
+                    app:layout_constraintStart_toEndOf="@id/item_brandcon1"
+                    app:layout_constraintTop_toBottomOf="@id/tv_brandcon_detail"
+                    app:title="상품권" />
+
+                <com.example.toss_and.presentation.tosspay.screens.CategoryButton
+                    android:id="@+id/item_brandcon3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="16dp"
+                    app:image="@drawable/img_chicken3x"
+                    app:layout_constraintStart_toEndOf="@id/item_brandcon2"
+                    app:layout_constraintTop_toBottomOf="@id/tv_brandcon_detail"
+                    app:title="치킨" />
+
+                <com.example.toss_and.presentation.tosspay.screens.CategoryButton
+                    android:id="@+id/item_brandcon4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="16dp"
+                    app:image="@drawable/img_pizza3x"
+                    app:layout_constraintStart_toEndOf="@id/item_brandcon3"
+                    app:layout_constraintTop_toBottomOf="@id/tv_brandcon_detail"
+                    app:title="피자 · 버거" />
+
+                <com.example.toss_and.presentation.tosspay.screens.CategoryButton
+                    android:id="@+id/item_brandcon5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:image="@drawable/img_conv3x"
+                    app:layout_constraintStart_toStartOf="@id/tv_toss_pay_title"
+                    app:layout_constraintTop_toBottomOf="@id/item_brandcon1"
+                    app:title="편의점" />
+
+                <com.example.toss_and.presentation.tosspay.screens.CategoryButton
+                    android:id="@+id/item_brandcon6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="16dp"
+                    app:image="@drawable/img_food3x"
+                    app:layout_constraintStart_toEndOf="@id/item_brandcon5"
+                    app:layout_constraintTop_toBottomOf="@id/item_brandcon1"
+                    app:title="외식" />
+
+                <com.example.toss_and.presentation.tosspay.screens.CategoryButton
+                    android:id="@+id/item_brandcon7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="16dp"
+                    app:image="@drawable/img_dessert3x"
+                    app:layout_constraintStart_toEndOf="@id/item_brandcon6"
+                    app:layout_constraintTop_toBottomOf="@id/item_brandcon1"
+                    app:title="디저트" />
+
+
+                <TextView
+                    android:id="@+id/tv_brandcon_title"
+                    style="@style/AndroidTitle2Bold16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="인기 브랜드콘"
+                    app:layout_constraintStart_toStartOf="@id/tv_toss_pay_title"
+                    app:layout_constraintTop_toBottomOf="@id/item_brandcon5" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_brandcon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_brandcon_title"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_brandcon" />
+
+                <View
+                    android:id="@+id/view_grey2"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/grey_100"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_brandcon" />
+
+                <TextView
+                    android:id="@+id/tv_shopping"
+                    style="@style/AndroidTitle1Bold18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="26dp"
+                    android:text="쇼핑하고 혜택 받기"
+                    app:layout_constraintStart_toStartOf="@id/tv_toss_pay_title"
+                    app:layout_constraintTop_toBottomOf="@id/view_grey2" />
+
+                <com.example.toss_and.presentation.tosspay.screens.TosspayShopping
+                    android:id="@+id/item_shopping1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    app:detail="3개 선택 가능"
+                    app:image="@drawable/img_cashback3x"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_shopping"
+                    app:title="캐시백 받을 브랜드 고르기" />
+
+                <com.example.toss_and.presentation.tosspay.screens.TosspayShopping
+                    android:id="@+id/item_shopping2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:detail="요기요 · 23일 남음"
+                    app:image="@drawable/img_yogiyo3x"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_shopping1"
+                    app:title="1,000원" />
+
+                <com.example.toss_and.presentation.tosspay.screens.TosspayShopping
+                    android:id="@+id/item_shopping3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:detail="삼성화재 다이렉트 (자동차보험) · 145일 남음"
+                    app:image="@drawable/img_samsung3x"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_shopping2"
+                    app:title="10,000원" />
+
+
+                <TextView
+                    android:id="@+id/tv_more2"
+                    style="@style/AndroidButtonMedium14"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/tosspay_edge"
+                    android:drawablePadding="0dp"
+                    android:gravity="center"
+                    android:text="28개 더 보기"
+                    android:textColor="@color/grey_300"
+                    app:drawableRightCompat="@drawable/icn_right_vector_tosspay"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_shopping3" />
+
+
+                <View
+                    android:id="@+id/view_grey3"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="@color/grey_100"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_more2" />
+
+
+                <TextView
+                    android:id="@+id/tv_ranking_title"
+                    style="@style/AndroidTitle2Bold16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="23dp"
+                    android:gravity="center"
+                    android:text="토스페이 인기 브랜드"
+                    app:layout_constraintStart_toStartOf="@id/tv_toss_pay_title"
+                    app:layout_constraintTop_toBottomOf="@id/view_grey3" />
+
+                <com.example.toss_and.presentation.tosspay.screens.TosspayBrandRanking
+                    android:id="@+id/item_ranking1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    app:image="@drawable/img_baemin3x"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ranking_title"
+                    app:rank="1"
+                    app:title="배달의 민족" />
+
+
+                <com.example.toss_and.presentation.tosspay.screens.TosspayBrandRanking
+                    android:id="@+id/item_ranking2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:image="@drawable/img_musinsa3x"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_ranking1"
+                    app:rank="2"
+                    app:title="무신사 스토어" />
+
+
+                <com.example.toss_and.presentation.tosspay.screens.TosspayBrandRanking
+                    android:id="@+id/item_ranking3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:image="@drawable/img_nexon3x"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_ranking2"
+                    app:rank="3"
+                    app:title="넥슨" />
+
+
+                <com.example.toss_and.presentation.tosspay.screens.TosspayBrandRanking
+                    android:id="@+id/item_ranking4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:image="@drawable/img_yeogi3x"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_ranking3"
+                    app:rank="4"
+                    app:title="여기어때" />
+
+
+                <com.example.toss_and.presentation.tosspay.screens.TosspayBrandRanking
+                    android:id="@+id/item_ranking5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:image="@drawable/img_yogiyo3x"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_ranking4"
+                    app:rank="5"
+                    app:title="요기요" />
+
+                <TextView
+                    android:id="@+id/tv_more3"
+                    style="@style/AndroidButtonMedium14"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="75dp"
+                    android:background="@drawable/tosspay_edge"
+                    android:gravity="center"
+                    android:text="더 보기"
+                    android:textColor="@color/grey_300"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_ranking5" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
