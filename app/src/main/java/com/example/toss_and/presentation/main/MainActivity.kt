@@ -14,7 +14,7 @@ import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import com.example.toss_and.R
 import com.example.toss_and.databinding.ActivityMainBinding
-import com.example.toss_and.presentation.MainViewModel
+import com.example.toss_and.presentation.main.viewmodels.MainViewModel
 import com.example.toss_and.presentation.TempPayFragment
 import com.example.toss_and.presentation.main.all.AllFragment
 import com.example.toss_and.presentation.main.benefit.BenefitFragment
