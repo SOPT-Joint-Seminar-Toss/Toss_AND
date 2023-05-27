@@ -22,12 +22,19 @@ class PurchaseActivity : BindingActivity<ActivityPurchaseBinding>(R.layout.activ
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        goBack()
         initAdapter()
         initTabLayout()
         goGiftActivity()
 
         registerClickEvent()
         registerObserver()
+    }
+
+    private fun goBack() {
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun registerObserver() {
